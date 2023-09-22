@@ -23,14 +23,21 @@ namespace MyProjectWebApi.Controllers
 
         }
 
-        [Route("GetAllFamily")]
+        [Route("GetByID")]
+        [HttpGet]
+
+        public IActionResult GetByID(int id)
+        {
+            var res = _familyService.GetByID(id);
+            return Ok(res);
+        }
+
+        [Route("GetAllFamilies")]
         [HttpGet]
         public IActionResult GetMembers()
         {
-
             var data = _familyService.GetMembers();
             return Ok(data);
-
         }
 
         [Route("AddFamily")]
@@ -38,7 +45,7 @@ namespace MyProjectWebApi.Controllers
 
         public IActionResult AddFamily(FamilyAddRequestModel model)
         {
-            _familyService.AddFamilyService(model);
+            _familyService.Add(model);
             return Ok();
         }
 
@@ -47,17 +54,15 @@ namespace MyProjectWebApi.Controllers
         [HttpPut]
         public IActionResult UpdatePerson(PersonModel model)
         {
-
-            _familyService.UpdatePersonService(model);
+            _familyService.UpdatePerson(model);
             return Ok();
-
         }
 
         [Route("UpdateFamilyAnimals")]
         [HttpPut]
         public IActionResult UpdateAnimal(AnimalModel model)
         {
-            _familyService.UpdateAnimalService(model);
+            _familyService.UpdateAnimal(model);
             return Ok();
         }
 
@@ -66,7 +71,7 @@ namespace MyProjectWebApi.Controllers
 
         public IActionResult DeleteFamily(int familyID)
         {
-            _familyService.DeleteFamilyService(familyID);
+            _familyService.Delete(familyID);
             return Ok();
         }
 

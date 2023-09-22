@@ -5,15 +5,17 @@ namespace MyProjectWebApi.Model.FamilyInterface
 {
     public interface IFamilyService
     {
+        FamilyModel GetByID(int id);
+
         List<FamilyModel> GetMembers();
 
-        void AddFamilyService(FamilyAddRequestModel model);
+        void Add(FamilyAddRequestModel model);
 
-        void UpdatePersonService(PersonModel model);
+        void UpdatePerson(PersonModel model);
 
-        void UpdateAnimalService(AnimalModel model);
+        void UpdateAnimal(AnimalModel model);
 
-        void DeleteFamilyService(int familyID);
+        void Delete(int familyID);
 
     }
 }
